@@ -43,8 +43,8 @@ You can then use the following methods:
 -   `DateSunInfo::getRiset(int $timestamp, float $latitude, float $longitude, ?bool $asObject)`: Shorter output, returning only the sunset, sunrise, and sun transit times.
 -   `DateSunInfo::getAll(int $timestamp, float $latitude, float $longitude, ?bool $asObject)`: Extended output, returning the azimuth of sunset and sunrise, as well as the height of the sun transit.
 -   `DateSunInfo::getPosition(int $timestamp, ?float $latitude, ?float $longitude, ?bool $asObject)`: Returns the sun's coordinates for the given timestamp. If latitude and longitude are specified, it also returns the horizon coordinates.
--   `DateSunInfo::hh_mm(int $timestamp)`: Returns the rounded time (to the nearest minute) as a string in hh:mm format, or "**:**" if the sun is continuously above the horizon, or "--:--" if the sun is continuously below the horizon.
--   `DateSunInfo::hh_mm_ss(int $timestamp)`: Returns the time as a string in hh:mm:ss format, or "**:**:**" if the sun is continuously above the horizon, or "--:--:--" if the sun is continuously below the horizon.
+-   `DateSunInfo::hh_mm(int $timestamp)`: Returns the rounded time (to the nearest minute) as a string in hh:mm format, or "\*\*:\*\*" if the sun is continuously above the horizon, or "--:--" if the sun is continuously below the horizon.
+-   `DateSunInfo::hh_mm_ss(int $timestamp)`: Returns the time as a string in hh:mm:ss format, or "\*\*:\*\*:\*\*" if the sun is continuously above the horizon, or "--:--:--" if the sun is continuously below the horizon.
 
 Return Values:
 -   `sunrise`: The timestamp of the sunrise or `true` is Sun continuously above horizon or `false` if Sun continuously below horizon.
@@ -77,7 +77,7 @@ You can modify the default values using the DateSunInfo::setOptions() method. Fo
 -   `DateSunInfo::setOptions(array $options)`: Modifies the default values, where options is:
     - `'height' => float $height`: Height of the observer above the environment in meters.
     - `'altitude' => float $altitude`: The default angle for finding sunrise or sunset is -0.833° below the horizon. This is the sum of the refraction at the horizon (34') and the apparent radius of the Sun (16'). It can be modified here.
-    - `'topographic_azimuth' => bool $type_azimuth`: If true, the class uses the topographic azimuth (North = 0°, East = 90°, South = 180°, West = 270°). If false, the class uses the astronomical azimuth (North = 180°, East = 270°, South = 0°, West = 90°).
+    - `'topographic_azimuth' => bool $type_azimuth`: If `true`, the class uses the topographic azimuth (North = 0°, East = 90°, South = 180°, West = 270°). If `false`, the class uses the astronomical azimuth (North = 180°, East = 270°, South = 0°, West = 90°).
     - `'twilight' => [float $angle => [string $begin_name, string $end_name]]`: The definition of other twilights.
     
 ### Example
