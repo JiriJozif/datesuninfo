@@ -1,0 +1,6 @@
+# Ignore Composer dependencies
+/vendor/
+/private/
+
+# Ignore the Composer lock file if you don't want to track it
+composer.lock
