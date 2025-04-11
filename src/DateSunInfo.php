@@ -5,7 +5,7 @@
  *
  * @author  Jiri Jozif <jiri.jozif@gmail.com>
  * @license MIT
- * @version 1.0.2
+ * @version 1.0.3
  *
  */
 declare(strict_types = 1);
@@ -218,12 +218,6 @@ class DateSunInfo
             if ($compute & self::ALL) {
                 $output['sunset_azimuth'] = $p['Az'];
             }
-            /*
-            if ($compute & self::ALL & $latitude < 0) {
-                $output['sunrise_azimuth'] = is_numeric($output['sunrise_azimuth']) ? self::fixAngle360(180 - $output['sunrise_azimuth']) : $output['sunrise_azimuth'];
-                $output['sunset_azimuth'] = is_numeric($output['sunset_azimuth']) ? self::fixAngle360(180 - $output['sunset_azimuth']) : $output['sunset_azimuth'];
-            }
-            */
             // at the moment of transit the Local Sidereal Time is equal to the Sun's Right Ascension
             $output['transit'] = $tTransit;
             if ($compute & self::ALL) {
@@ -316,6 +310,10 @@ class DateSunInfo
             /** @var array<string, float> $sunEphem */
             $sunEphem = self::getPosition($t, $latitude, $longitude, false);
         } while (abs($sunEphem['h'] - $alt) > 0.05 && ++$i < 3);
+
+        if (date('j', $transit) !== date('j', $t)) {// check if timestamp is this same day
+            return ['timestamp' => true, 'Az' => true];
+        }
 
         return ['timestamp' => $t, 'Az' => $sunEphem['Az']];
     }
