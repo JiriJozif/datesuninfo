@@ -56,11 +56,20 @@ Return Values:
 -   `nautical_twilight_end`: The end of the nautical dusk (The Sun is 12° below the horizon). It starts at civil_twilight_end. 
 -   `astronomical_twilight_begin`: The start of the astronomical dawn (The Sun is 18° below the horizon). It ends at nautical_twilight_begin. 
 -   `astronomical_twilight_end`: The end of the astronomical dusk (The Sun is 18° below the horizon). It starts at nautical_twilight_end. 
+
 Extended output from method DateSunInfo::getAll():
 -   `sunrise_azimuth`: The azimuth of the sunrise in degree.
 -   `sunset_azimuth`: The azimuth of the sunset in degree.
 -   `transit_height`: The height of the transit in degree.
 -   `lowest_height`: The lowest height of the Sun in the sky, in degrees, occurs on the opposite side as the transit.
+
+Output from method DateSunInfo::getPosition():
+-   `RA`: Right Ascension in degree.
+-   `Dec`: Declination in degree.
+-   `Lon`: Ecliptic longitude in degree.
+-   `R`: Distance from Earth in AU.
+-   `h`: Horizontal coordinate system, height (altitude) above horizon in degree (only if latitude and longitude were entered).
+-   `Az`: Horizontal coordinate system, azimuth in degree (only if latitude and longitude were entered).
 
 ### Example
 
