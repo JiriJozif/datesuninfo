@@ -5,7 +5,7 @@
  *
  * @author  Jiri Jozif <jiri.jozif@gmail.com>
  * @license MIT
- * @version 1.0.3
+ * @version 1.0.4
  *
  */
 declare(strict_types = 1);
@@ -310,10 +310,6 @@ class DateSunInfo
             /** @var array<string, float> $sunEphem */
             $sunEphem = self::getPosition($t, $latitude, $longitude, false);
         } while (abs($sunEphem['h'] - $alt) > 0.05 && ++$i < 3);
-
-        if (date('j', $transit) !== date('j', $t)) {// check if timestamp is this same day
-            return ['timestamp' => true, 'Az' => true];
-        }
 
         return ['timestamp' => $t, 'Az' => $sunEphem['Az']];
     }
