@@ -2,8 +2,7 @@
 
 # PHP library for calculating Sunrise, Sunset and Sun transit
 
-A more accurate replacement for the PHP function `date_sun_info()`, which has been returning inaccurate sunrise and sunset times from version 8.0 up to the present (April 2025). 
-In addition, the library provides extra values and functions.
+A more accurate replacement for the PHP function `date_sun_info()`. In addition, the library provides extra values and functions.
 
 ## Installation
 
